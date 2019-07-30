@@ -22,12 +22,11 @@ import os  # handy system and path functions
 import sys  # to get file system encoding
 import random # to randomize viewing order
 
-
 LUMINA = 1
 LUMINA_TRIGGER = 3
 
 ## initialize communication with the lumina
-
+'''
 if LUMINA == 1:
     import pyxid # to interact with the Lumina box
     import sys
@@ -49,7 +48,7 @@ if LUMINA == 1:
         print "Error: Lumina device is not a response device??"
         log.write("Error: Lumina device is not a response device??")
         sys.exit(1)
-
+'''
         
 # Ensure that relative paths start from the same directory as this script
 _thisDir = os.path.dirname(os.path.abspath(__file__)).decode(sys.getfilesystemencoding())
@@ -196,7 +195,8 @@ while continueRoutine:
         event.clearEvents()
         theseKeys=[]
         if LUMINA==1:
-            lumina_dev.clear_response_queue()
+            break; #sarah added this 
+            #lumina_dev.clear_response_queue()
     if key_resp_2.status == STARTED:
         # check for a LUMINA_TRIGGER from the Lumina box
         if LUMINA == 1:
@@ -262,10 +262,20 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '1'):
     # write a .txt file to record participant's viewing order
     file = open("Participant" + expInfo['participant'] +"VideoList.txt", "w+")
     file.write("Randomization 1: begin with Control video" + '\n')
-    for video in combinedList: 
-        file.write(video + '\n')
     file.close()
     
+    # make the file for c videos
+    file = open("Participant" + expInfo['participant'] +"c_videos.txt", "w+")
+    file.close()
+    
+    # make the file for the s videos
+    file = open("Participant" + expInfo['participant'] +"s_videos.txt", "w+")
+    file.close()
+    """
+    added by sarah
+    """
+    videoClock = core.Clock()  # to get times for txt files, will time all videos and get their stop/start times
+    videoClock.reset()
     # begin playing videos in combinedList
     for video in combinedList:
         if (video == 'cv01'): 
@@ -278,7 +288,7 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '1'):
             # update component parameters for each repeat
             movie = visual.MovieStim3(
                 win=win, name='movie',
-                filename=u'/Users/MRIPsychology/Documents/MATLAB/Experiments/Child/stimuli/cv01.mov',
+                filename=u'/Users/sarahcraig/Desktop/ResearchFiles/VCT2/animacy_vids/cv01.mov',
                 ori=0, pos=(0, 0), opacity=1,
                 depth=0.0,
                 )
@@ -289,6 +299,18 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '1'):
                     thisComponent.status = NOT_STARTED
 
             # -------Start Routine "cv01"-------
+            """
+            added by sarah
+            """
+            #write to master
+            vidStartTime= videoClock.getTime()
+            file = open("Participant" + expInfo['participant'] +"VideoList.txt", "a+") #a for append
+            file.write(video + '\t' + str( round(vidStartTime, 3 ))+ '\t')
+            file.close() 
+            #write to c videos file
+            file = open("Participant" + expInfo['participant'] +"c_videos.txt", "a+") #a for append
+            file.write(video + '\t' + str( round(vidStartTime, 3 ))+ '\t')
+            file.close() 
             while continueRoutine and routineTimer.getTime() > 0:
                 # get current time
                 t = cv01Clock.getTime()
@@ -325,6 +347,21 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '1'):
                     win.flip()
 
             # -------Ending Routine "cv01"-------
+            """
+            added by sarah
+            """
+            #write to master
+            vidEndTime= videoClock.getTime()
+            file = open("Participant" + expInfo['participant'] +"VideoList.txt", "a+") #a for append            
+            file.write( str( round(vidEndTime, 3) )+ '\t')
+            file.write( str( round( (vidEndTime - vidStartTime),3) )+ '\n') 
+            file.close() 
+            #write to c videos file
+            file = open("Participant" + expInfo['participant'] +"c_videos.txt", "a+")
+            file.write( str( round(vidEndTime, 3) )+ '\t')
+            file.write( str( round( (vidEndTime - vidStartTime),3) )+ '\t') 
+            file.write( "1" + '\n' )
+            file.close() 
             for thisComponent in cv01Components:
                 if hasattr(thisComponent, "setAutoDraw"):
                     thisComponent.setAutoDraw(False)
@@ -339,7 +376,7 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '1'):
             # update component parameters for each repeat
             movie_2 = visual.MovieStim3(
                 win=win, name='movie_2',
-                filename=u'/Users/MRIPsychology/Documents/MATLAB/Experiments/Child/stimuli/cv02.mov',
+                filename=u'/Users/sarahcraig/Desktop/ResearchFiles/VCT2/animacy_vids/cv02.mov',
                 ori=0, pos=(0, 0), opacity=1,
                 depth=0.0,
                 )
@@ -350,6 +387,18 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '1'):
                     thisComponent.status = NOT_STARTED
 
             # -------Start Routine "cv02"-------
+            """
+            added by sarah
+            """
+            #write to master
+            vidStartTime= videoClock.getTime()
+            file = open("Participant" + expInfo['participant'] +"VideoList.txt", "a+") #a for append
+            file.write(video + '\t' + str( round(vidStartTime, 3 ))+ '\t')
+            file.close() 
+            #write to c videos file
+            file = open("Participant" + expInfo['participant'] +"c_videos.txt", "a+") #a for append
+            file.write(video + '\t' + str( round(vidStartTime, 3 ))+ '\t')
+            file.close()
             while continueRoutine and routineTimer.getTime() > 0:
                 # get current time
                 t = cv02Clock.getTime()
@@ -386,6 +435,21 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '1'):
                     win.flip()
 
             # -------Ending Routine "cv02"-------
+            """
+            added by sarah
+            """
+            #write to master
+            vidEndTime= videoClock.getTime()
+            file = open("Participant" + expInfo['participant'] +"VideoList.txt", "a+") #a for append            
+            file.write( str( round(vidEndTime, 3) )+ '\t')
+            file.write( str( round( (vidEndTime - vidStartTime),3) )+ '\n') 
+            file.close() 
+            #write to c videos file
+            file = open("Participant" + expInfo['participant'] +"c_videos.txt", "a+")
+            file.write( str( round(vidEndTime, 3) )+ '\t')
+            file.write( str( round( (vidEndTime - vidStartTime),3) )+ '\t') 
+            file.write( "1" + '\n' )
+            file.close() 
             for thisComponent in cv02Components:
                 if hasattr(thisComponent, "setAutoDraw"):
                     thisComponent.setAutoDraw(False)
@@ -400,7 +464,7 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '1'):
             # update component parameters for each repeat
             movie_3 = visual.MovieStim3(
                 win=win, name='movie_3',
-                filename=u'/Users/MRIPsychology/Documents/MATLAB/Experiments/Child/stimuli/cv03.mov',
+                filename=u'/Users/sarahcraig/Desktop/ResearchFiles/VCT2/animacy_vids/cv03.mov',
                 ori=0, pos=(0, 0), opacity=1,
                 depth=0.0,
                 )
@@ -411,6 +475,18 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '1'):
                     thisComponent.status = NOT_STARTED
 
             # -------Start Routine "cv03"-------
+            """
+            added by sarah
+            """
+            #write to master
+            vidStartTime= videoClock.getTime()
+            file = open("Participant" + expInfo['participant'] +"VideoList.txt", "a+") #a for append
+            file.write(video + '\t' + str( round(vidStartTime, 3 ))+ '\t')
+            file.close() 
+            #write to c videos file
+            file = open("Participant" + expInfo['participant'] +"c_videos.txt", "a+") #a for append
+            file.write(video + '\t' + str( round(vidStartTime, 3 ))+ '\t')
+            file.close() 
             while continueRoutine and routineTimer.getTime() > 0:
                 # get current time
                 t = cv03Clock.getTime()
@@ -447,6 +523,21 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '1'):
                     win.flip()
 
             # -------Ending Routine "cv03"-------
+            """
+            added by sarah
+            """
+            #write to master
+            vidEndTime= videoClock.getTime()
+            file = open("Participant" + expInfo['participant'] +"VideoList.txt", "a+") #a for append            
+            file.write( str( round(vidEndTime, 3) )+ '\t')
+            file.write( str( round( (vidEndTime - vidStartTime),3) )+ '\n') 
+            file.close() 
+            #write to c videos file
+            file = open("Participant" + expInfo['participant'] +"c_videos.txt", "a+")
+            file.write( str( round(vidEndTime, 3) )+ '\t')
+            file.write( str( round( (vidEndTime - vidStartTime),3) )+ '\t') 
+            file.write( "1" + '\n' )
+            file.close() 
             for thisComponent in cv03Components:
                 if hasattr(thisComponent, "setAutoDraw"):
                     thisComponent.setAutoDraw(False)
@@ -461,7 +552,7 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '1'):
             # update component parameters for each repeat
             movie_4 = visual.MovieStim3(
                 win=win, name='movie_4',
-                filename=u'/Users/MRIPsychology/Documents/MATLAB/Experiments/Child/stimuli/cv04.mov',
+                filename=u'/Users/sarahcraig/Desktop/ResearchFiles/VCT2/animacy_vids/cv04.mov',
                 ori=0, pos=(0, 0), opacity=1,
                 depth=0.0,
                 )
@@ -472,6 +563,18 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '1'):
                     thisComponent.status = NOT_STARTED
 
             # -------Start Routine "cv04"-------
+            """
+            added by sarah
+            """
+            #write to master
+            vidStartTime= videoClock.getTime()
+            file = open("Participant" + expInfo['participant'] +"VideoList.txt", "a+") #a for append
+            file.write(video + '\t' + str( round(vidStartTime, 3 ))+ '\t')
+            file.close() 
+            #write to c videos file
+            file = open("Participant" + expInfo['participant'] +"c_videos.txt", "a+") #a for append
+            file.write(video + '\t' + str( round(vidStartTime, 3 ))+ '\t')
+            file.close() 
             while continueRoutine and routineTimer.getTime() > 0:
                 # get current time
                 t = cv04Clock.getTime()
@@ -508,6 +611,21 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '1'):
                     win.flip()
 
             # -------Ending Routine "cv04"-------
+            """
+            added by sarah
+            """
+            #write to master
+            vidEndTime= videoClock.getTime()
+            file = open("Participant" + expInfo['participant'] +"VideoList.txt", "a+") #a for append            
+            file.write( str( round(vidEndTime, 3) )+ '\t')
+            file.write( str( round( (vidEndTime - vidStartTime),3) )+ '\n') 
+            file.close() 
+            #write to c videos file
+            file = open("Participant" + expInfo['participant'] +"c_videos.txt", "a+")
+            file.write( str( round(vidEndTime, 3) )+ '\t')
+            file.write( str( round( (vidEndTime - vidStartTime),3) )+ '\t') 
+            file.write( "1" + '\n' )
+            file.close() 
             for thisComponent in cv04Components:
                 if hasattr(thisComponent, "setAutoDraw"):
                     thisComponent.setAutoDraw(False)
@@ -522,7 +640,7 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '1'):
             # update component parameters for each repeat
             movie_5 = visual.MovieStim3(
                 win=win, name='movie_5',
-                filename=u'/Users/MRIPsychology/Documents/MATLAB/Experiments/Child/stimuli/cv05.mov',
+                filename=u'/Users/sarahcraig/Desktop/ResearchFiles/VCT2/animacy_vids/cv05.mov',
                 ori=0, pos=(0, 0), opacity=1,
                 depth=0.0,
                 )
@@ -533,6 +651,18 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '1'):
                     thisComponent.status = NOT_STARTED
 
             # -------Start Routine "cv05"-------
+            """
+            added by sarah
+            """
+            #write to master
+            vidStartTime= videoClock.getTime()
+            file = open("Participant" + expInfo['participant'] +"VideoList.txt", "a+") #a for append
+            file.write(video + '\t' + str( round(vidStartTime, 3 ))+ '\t')
+            file.close() 
+            #write to c videos file
+            file = open("Participant" + expInfo['participant'] +"c_videos.txt", "a+") #a for append
+            file.write(video + '\t' + str( round(vidStartTime, 3 ))+ '\t')
+            file.close() 
             while continueRoutine and routineTimer.getTime() > 0:
                 # get current time
                 t = cv05Clock.getTime()
@@ -569,6 +699,21 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '1'):
                     win.flip()
 
             # -------Ending Routine "cv05"-------
+            """
+            added by sarah
+            """
+            #write to master
+            vidEndTime= videoClock.getTime()
+            file = open("Participant" + expInfo['participant'] +"VideoList.txt", "a+") #a for append            
+            file.write( str( round(vidEndTime, 3) )+ '\t')
+            file.write( str( round( (vidEndTime - vidStartTime),3) )+ '\n') 
+            file.close() 
+            #write to c videos file
+            file = open("Participant" + expInfo['participant'] +"c_videos.txt", "a+")
+            file.write( str( round(vidEndTime, 3) )+ '\t')
+            file.write( str( round( (vidEndTime - vidStartTime),3) )+ '\t') 
+            file.write( "1" + '\n' )
+            file.close() 
             for thisComponent in cv05Components:
                 if hasattr(thisComponent, "setAutoDraw"):
                     thisComponent.setAutoDraw(False)
@@ -583,7 +728,7 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '1'):
             # update component parameters for each repeat
             movie_6 = visual.MovieStim3(
                 win=win, name='movie_6',
-                filename=u'/Users/MRIPsychology/Documents/MATLAB/Experiments/Child/stimuli/cv06.mov',
+                filename=u'/Users/sarahcraig/Desktop/ResearchFiles/VCT2/animacy_vids/cv06.mov',
                 ori=0, pos=(0, 0), opacity=1,
                 depth=0.0,
                 )
@@ -594,6 +739,18 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '1'):
                     thisComponent.status = NOT_STARTED
 
             # -------Start Routine "cv06"-------
+            """
+            added by sarah
+            """
+            #write to master
+            vidStartTime= videoClock.getTime()
+            file = open("Participant" + expInfo['participant'] +"VideoList.txt", "a+") #a for append
+            file.write(video + '\t' + str( round(vidStartTime, 3 ))+ '\t')
+            file.close() 
+            #write to c videos file
+            file = open("Participant" + expInfo['participant'] +"c_videos.txt", "a+") #a for append
+            file.write(video + '\t' + str( round(vidStartTime, 3 ))+ '\t')
+            file.close() 
             while continueRoutine and routineTimer.getTime() > 0:
                 # get current time
                 t = cv06Clock.getTime()
@@ -630,6 +787,22 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '1'):
                     win.flip()
 
             # -------Ending Routine "cv06"-------
+            """
+            added by sarah
+            """
+            #write to master
+            vidEndTime= videoClock.getTime()
+            file = open("Participant" + expInfo['participant'] +"VideoList.txt", "a+") #a for append            
+            file.write( str( round(vidEndTime, 3) )+ '\t')
+            file.write( str( round( (vidEndTime - vidStartTime),3) )+ '\n') 
+            file.close() 
+            #write to c videos file
+            file = open("Participant" + expInfo['participant'] +"c_videos.txt", "a+")
+            file.write( str( round(vidEndTime, 3) )+ '\t')
+            file.write( str( round( (vidEndTime - vidStartTime),3) )+ '\t') 
+            file.write( "1" + '\n' )
+            file.close() 
+            
             for thisComponent in cv06Components:
                 if hasattr(thisComponent, "setAutoDraw"):
                     thisComponent.setAutoDraw(False)
@@ -644,7 +817,7 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '1'):
             # update component parameters for each repeat
             movie_7 = visual.MovieStim3(
                 win=win, name='movie_7',
-                filename=u'/Users/MRIPsychology/Documents/MATLAB/Experiments/Child/stimuli/cv07.mov',
+                filename=u'/Users/sarahcraig/Desktop/ResearchFiles/VCT2/animacy_vids/cv07.mov',
                 ori=0, pos=(0, 0), opacity=1,
                 depth=0.0,
                 )
@@ -655,6 +828,18 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '1'):
                     thisComponent.status = NOT_STARTED
 
             # -------Start Routine "cv07"-------
+            """
+            added by sarah
+            """
+            #write to master
+            vidStartTime= videoClock.getTime()
+            file = open("Participant" + expInfo['participant'] +"VideoList.txt", "a+") #a for append
+            file.write(video + '\t' + str( round(vidStartTime, 3 ))+ '\t')
+            file.close() 
+            #write to c videos file
+            file = open("Participant" + expInfo['participant'] +"c_videos.txt", "a+") #a for append
+            file.write(video + '\t' + str( round(vidStartTime, 3 ))+ '\t')
+            file.close() 
             while continueRoutine and routineTimer.getTime() > 0:
                 # get current time
                 t = cv07Clock.getTime()
@@ -691,6 +876,22 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '1'):
                     win.flip()
 
             # -------Ending Routine "cv07"-------
+            """
+            added by sarah
+            """
+            #write to master
+            vidEndTime= videoClock.getTime()
+            file = open("Participant" + expInfo['participant'] +"VideoList.txt", "a+") #a for append            
+            file.write( str( round(vidEndTime, 3) )+ '\t')
+            file.write( str( round( (vidEndTime - vidStartTime),3) )+ '\n') 
+            file.close() 
+            #write to c videos file
+            file = open("Participant" + expInfo['participant'] +"c_videos.txt", "a+")
+            file.write( str( round(vidEndTime, 3) )+ '\t')
+            file.write( str( round( (vidEndTime - vidStartTime),3) )+ '\t') 
+            file.write( "1" + '\n' )
+            file.close() 
+            
             for thisComponent in cv07Components:
                 if hasattr(thisComponent, "setAutoDraw"):
                     thisComponent.setAutoDraw(False)
@@ -705,7 +906,7 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '1'):
             # update component parameters for each repeat
             movie_8 = visual.MovieStim3(
                 win=win, name='movie_8',
-                filename=u'/Users/MRIPsychology/Documents/MATLAB/Experiments/Child/stimuli/cv08.mov',
+                filename=u'/Users/sarahcraig/Desktop/ResearchFiles/VCT2/animacy_vids/cv08.mov',
                 ori=0, pos=(0, 0), opacity=1,
                 depth=0.0,
                 )
@@ -716,6 +917,18 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '1'):
                     thisComponent.status = NOT_STARTED
 
             # -------Start Routine "cv08"-------
+            """
+            added by sarah
+            """
+            #write to master
+            vidStartTime= videoClock.getTime()
+            file = open("Participant" + expInfo['participant'] +"VideoList.txt", "a+") #a for append
+            file.write(video + '\t' + str( round(vidStartTime, 3 ))+ '\t')
+            file.close() 
+            #write to c videos file
+            file = open("Participant" + expInfo['participant'] +"c_videos.txt", "a+") #a for append
+            file.write(video + '\t' + str( round(vidStartTime, 3 ))+ '\t')
+            file.close() 
             while continueRoutine and routineTimer.getTime() > 0:
                 # get current time
                 t = cv08Clock.getTime()
@@ -752,6 +965,22 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '1'):
                     win.flip()
 
             # -------Ending Routine "cv08"-------
+            """
+            added by sarah
+            """
+            #write to master
+            vidEndTime= videoClock.getTime()
+            file = open("Participant" + expInfo['participant'] +"VideoList.txt", "a+") #a for append            
+            file.write( str( round(vidEndTime, 3) )+ '\t')
+            file.write( str( round( (vidEndTime - vidStartTime),3) )+ '\n') 
+            file.close() 
+            #write to c videos file
+            file = open("Participant" + expInfo['participant'] +"c_videos.txt", "a+")
+            file.write( str( round(vidEndTime, 3) )+ '\t')
+            file.write( str( round( (vidEndTime - vidStartTime),3) )+ '\t') 
+            file.write( "1" + '\n' )
+            file.close() 
+            
             for thisComponent in cv08Components:
                 if hasattr(thisComponent, "setAutoDraw"):
                     thisComponent.setAutoDraw(False)
@@ -766,7 +995,7 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '1'):
             # update component parameters for each repeat
             movie_9 = visual.MovieStim3(
                 win=win, name='movie_9',
-                filename=u'/Users/MRIPsychology/Documents/MATLAB/Experiments/Child/stimuli/sv01.mov',
+                filename=u'/Users/sarahcraig/Desktop/ResearchFiles/VCT2/animacy_vids/sv01.mov',
                 ori=0, pos=(0, 0), opacity=1,
                 depth=0.0,
                 )
@@ -777,6 +1006,18 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '1'):
                     thisComponent.status = NOT_STARTED
 
             # -------Start Routine "sv01"-------
+            """
+            added by sarah
+            """
+            #write to master
+            vidStartTime= videoClock.getTime()
+            file = open("Participant" + expInfo['participant'] +"VideoList.txt", "a+") #a for append
+            file.write(video + '\t' + str( round(vidStartTime, 3 ))+ '\t')
+            file.close() 
+            #write to s videos file
+            file = open("Participant" + expInfo['participant'] +"s_videos.txt", "a+") #a for append
+            file.write(video + '\t' + str( round(vidStartTime, 3 ))+ '\t')
+            file.close() 
             while continueRoutine and routineTimer.getTime() > 0:
                 # get current time
                 t = sv01Clock.getTime()
@@ -813,6 +1054,22 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '1'):
                     win.flip()
 
             # -------Ending Routine "sv01"-------
+            """
+            added by sarah
+            """
+            #write to master
+            vidEndTime= videoClock.getTime()
+            file = open("Participant" + expInfo['participant'] +"VideoList.txt", "a+") #a for append            
+            file.write( str( round(vidEndTime, 3) )+ '\t')
+            file.write( str( round( (vidEndTime - vidStartTime),3) )+ '\n') 
+            file.close() 
+            #write to s videos file
+            file = open("Participant" + expInfo['participant'] +"s_videos.txt", "a+")
+            file.write( str( round(vidEndTime, 3) )+ '\t')
+            file.write( str( round( (vidEndTime - vidStartTime),3) )+ '\t') 
+            file.write( "1" + '\n' )
+            file.close() 
+            
             for thisComponent in sv01Components:
                 if hasattr(thisComponent, "setAutoDraw"):
                     thisComponent.setAutoDraw(False)
@@ -827,7 +1084,7 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '1'):
             # update component parameters for each repeat
             movie_10 = visual.MovieStim3(
                 win=win, name='movie_10',
-                filename=u'/Users/MRIPsychology/Documents/MATLAB/Experiments/Child/stimuli/sv02.mov',
+                filename=u'/Users/sarahcraig/Desktop/ResearchFiles/VCT2/animacy_vids/sv02.mov',
                 ori=0, pos=(0, 0), opacity=1,
                 depth=0.0,
                 )
@@ -838,6 +1095,18 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '1'):
                     thisComponent.status = NOT_STARTED
 
             # -------Start Routine "sv02"-------
+            """
+            added by sarah
+            """
+            #write to master
+            vidStartTime= videoClock.getTime()
+            file = open("Participant" + expInfo['participant'] +"VideoList.txt", "a+") #a for append
+            file.write(video + '\t' + str( round(vidStartTime, 3 ))+ '\t')
+            file.close() 
+            #write to s videos file
+            file = open("Participant" + expInfo['participant'] +"s_videos.txt", "a+") #a for append
+            file.write(video + '\t' + str( round(vidStartTime, 3 ))+ '\t')
+            file.close() 
             while continueRoutine and routineTimer.getTime() > 0:
                 # get current time
                 t = sv02Clock.getTime()
@@ -874,6 +1143,22 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '1'):
                     win.flip()
 
             # -------Ending Routine "sv02"-------
+            """
+            added by sarah
+            """
+            #write to master
+            vidEndTime= videoClock.getTime()
+            file = open("Participant" + expInfo['participant'] +"VideoList.txt", "a+") #a for append            
+            file.write( str( round(vidEndTime, 3) )+ '\t')
+            file.write( str( round( (vidEndTime - vidStartTime),3) )+ '\n') 
+            file.close() 
+            #write to s videos file
+            file = open("Participant" + expInfo['participant'] +"s_videos.txt", "a+")
+            file.write( str( round(vidEndTime, 3) )+ '\t')
+            file.write( str( round( (vidEndTime - vidStartTime),3) )+ '\t') 
+            file.write( "1" + '\n' )
+            file.close() 
+            
             for thisComponent in sv02Components:
                 if hasattr(thisComponent, "setAutoDraw"):
                     thisComponent.setAutoDraw(False)
@@ -888,7 +1173,7 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '1'):
             # update component parameters for each repeat
             movie_11 = visual.MovieStim3(
                 win=win, name='movie_11',
-                filename=u'/Users/MRIPsychology/Documents/MATLAB/Experiments/Child/stimuli/sv03.mov',
+                filename=u'/Users/sarahcraig/Desktop/ResearchFiles/VCT2/animacy_vids/sv03.mov',
                 ori=0, pos=(0, 0), opacity=1,
                 depth=0.0,
                 )
@@ -899,6 +1184,18 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '1'):
                     thisComponent.status = NOT_STARTED
 
             # -------Start Routine "sv03"-------
+            """
+            added by sarah
+            """
+            #write to master
+            vidStartTime= videoClock.getTime()
+            file = open("Participant" + expInfo['participant'] +"VideoList.txt", "a+") #a for append
+            file.write(video + '\t' + str( round(vidStartTime, 3 ))+ '\t')
+            file.close() 
+            #write to s videos file
+            file = open("Participant" + expInfo['participant'] +"s_videos.txt", "a+") #a for append
+            file.write(video + '\t' + str( round(vidStartTime, 3 ))+ '\t')
+            file.close() 
             while continueRoutine and routineTimer.getTime() > 0:
                 # get current time
                 t = sv03Clock.getTime()
@@ -935,6 +1232,22 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '1'):
                     win.flip()
 
             # -------Ending Routine "sv03"-------
+            """
+            added by sarah
+            """
+            #write to master
+            vidEndTime= videoClock.getTime()
+            file = open("Participant" + expInfo['participant'] +"VideoList.txt", "a+") #a for append            
+            file.write( str( round(vidEndTime, 3) )+ '\t')
+            file.write( str( round( (vidEndTime - vidStartTime),3) )+ '\n') 
+            file.close() 
+            #write to s videos file
+            file = open("Participant" + expInfo['participant'] +"s_videos.txt", "a+")
+            file.write( str( round(vidEndTime, 3) )+ '\t')
+            file.write( str( round( (vidEndTime - vidStartTime),3) )+ '\t') 
+            file.write( "1" + '\n' )
+            file.close() 
+            
             for thisComponent in sv03Components:
                 if hasattr(thisComponent, "setAutoDraw"):
                     thisComponent.setAutoDraw(False)
@@ -949,7 +1262,7 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '1'):
             # update component parameters for each repeat
             movie_12 = visual.MovieStim3(
                 win=win, name='movie_12',
-                filename=u'/Users/MRIPsychology/Documents/MATLAB/Experiments/Child/stimuli/sv04.mov',
+                filename=u'/Users/sarahcraig/Desktop/ResearchFiles/VCT2/animacy_vids/sv04.mov',
                 ori=0, pos=(0, 0), opacity=1,
                 depth=0.0,
                 )
@@ -960,6 +1273,18 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '1'):
                     thisComponent.status = NOT_STARTED
 
             # -------Start Routine "sv04"-------
+            """
+            added by sarah
+            """
+            #write to master
+            vidStartTime= videoClock.getTime()
+            file = open("Participant" + expInfo['participant'] +"VideoList.txt", "a+") #a for append
+            file.write(video + '\t' + str( round(vidStartTime, 3 ))+ '\t')
+            file.close() 
+            #write to s videos file
+            file = open("Participant" + expInfo['participant'] +"s_videos.txt", "a+") #a for append
+            file.write(video + '\t' + str( round(vidStartTime, 3 ))+ '\t')
+            file.close() 
             while continueRoutine and routineTimer.getTime() > 0:
                 # get current time
                 t = sv04Clock.getTime()
@@ -996,6 +1321,22 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '1'):
                     win.flip()
 
             # -------Ending Routine "sv04"-------
+            """
+            added by sarah
+            """
+            #write to master
+            vidEndTime= videoClock.getTime()
+            file = open("Participant" + expInfo['participant'] +"VideoList.txt", "a+") #a for append            
+            file.write( str( round(vidEndTime, 3) )+ '\t')
+            file.write( str( round( (vidEndTime - vidStartTime),3) )+ '\n') 
+            file.close() 
+            #write to s videos file
+            file = open("Participant" + expInfo['participant'] +"s_videos.txt", "a+")
+            file.write( str( round(vidEndTime, 3) )+ '\t')
+            file.write( str( round( (vidEndTime - vidStartTime),3) )+ '\t') 
+            file.write( "1" + '\n' )
+            file.close() 
+            
             for thisComponent in sv04Components:
                 if hasattr(thisComponent, "setAutoDraw"):
                     thisComponent.setAutoDraw(False)
@@ -1010,7 +1351,7 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '1'):
             # update component parameters for each repeat
             movie_13 = visual.MovieStim3(
                 win=win, name='movie_13',
-                filename=u'/Users/MRIPsychology/Documents/MATLAB/Experiments/Child/stimuli/sv05.mov',
+                filename=u'/Users/sarahcraig/Desktop/ResearchFiles/VCT2/animacy_vids/sv05.mov',
                 ori=0, pos=(0, 0), opacity=1,
                 depth=0.0,
                 )
@@ -1021,6 +1362,18 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '1'):
                     thisComponent.status = NOT_STARTED
 
             # -------Start Routine "sv05"-------
+            """
+            added by sarah
+            """
+            #write to master
+            vidStartTime= videoClock.getTime()
+            file = open("Participant" + expInfo['participant'] +"VideoList.txt", "a+") #a for append
+            file.write(video + '\t' + str( round(vidStartTime, 3 ))+ '\t')
+            file.close() 
+            #write to s videos file
+            file = open("Participant" + expInfo['participant'] +"s_videos.txt", "a+") #a for append
+            file.write(video + '\t' + str( round(vidStartTime, 3 ))+ '\t')
+            file.close() 
             while continueRoutine and routineTimer.getTime() > 0:
                 # get current time
                 t = sv05Clock.getTime()
@@ -1057,6 +1410,22 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '1'):
                     win.flip()
 
             # -------Ending Routine "sv05"-------
+            """
+            added by sarah
+            """
+            #write to master
+            vidEndTime= videoClock.getTime()
+            file = open("Participant" + expInfo['participant'] +"VideoList.txt", "a+") #a for append            
+            file.write( str( round(vidEndTime, 3) )+ '\t')
+            file.write( str( round( (vidEndTime - vidStartTime),3) )+ '\n') 
+            file.close() 
+            #write to s videos file
+            file = open("Participant" + expInfo['participant'] +"s_videos.txt", "a+")
+            file.write( str( round(vidEndTime, 3) )+ '\t')
+            file.write( str( round( (vidEndTime - vidStartTime),3) )+ '\t') 
+            file.write( "1" + '\n' )
+            file.close() 
+            
             for thisComponent in sv05Components:
                 if hasattr(thisComponent, "setAutoDraw"):
                     thisComponent.setAutoDraw(False)
@@ -1071,7 +1440,7 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '1'):
             # update component parameters for each repeat
             movie_14 = visual.MovieStim3(
                 win=win, name='movie_14',
-                filename=u'/Users/MRIPsychology/Documents/MATLAB/Experiments/Child/stimuli/sv06.mov',
+                filename=u'/Users/sarahcraig/Desktop/ResearchFiles/VCT2/animacy_vids/sv06.mov',
                 ori=0, pos=(0, 0), opacity=1,
                 depth=0.0,
                 )
@@ -1082,6 +1451,18 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '1'):
                     thisComponent.status = NOT_STARTED
 
             # -------Start Routine "sv06"-------
+            """
+            added by sarah
+            """
+            #write to master
+            vidStartTime= videoClock.getTime()
+            file = open("Participant" + expInfo['participant'] +"VideoList.txt", "a+") #a for append
+            file.write(video + '\t' + str( round(vidStartTime, 3 ))+ '\t')
+            file.close() 
+            #write to s videos file
+            file = open("Participant" + expInfo['participant'] +"s_videos.txt", "a+") #a for append
+            file.write(video + '\t' + str( round(vidStartTime, 3 ))+ '\t')
+            file.close() 
             while continueRoutine and routineTimer.getTime() > 0:
                 # get current time
                 t = sv06Clock.getTime()
@@ -1118,6 +1499,22 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '1'):
                     win.flip()
 
             # -------Ending Routine "sv06"-------
+            """
+            added by sarah
+            """
+            #write to master
+            vidEndTime= videoClock.getTime()
+            file = open("Participant" + expInfo['participant'] +"VideoList.txt", "a+") #a for append            
+            file.write( str( round(vidEndTime, 3) )+ '\t')
+            file.write( str( round( (vidEndTime - vidStartTime),3) )+ '\n') 
+            file.close() 
+            #write to s videos file
+            file = open("Participant" + expInfo['participant'] +"s_videos.txt", "a+")
+            file.write( str( round(vidEndTime, 3) )+ '\t')
+            file.write( str( round( (vidEndTime - vidStartTime),3) )+ '\t') 
+            file.write( "1" + '\n' )
+            file.close() 
+            
             for thisComponent in sv06Components:
                 if hasattr(thisComponent, "setAutoDraw"):
                     thisComponent.setAutoDraw(False)
@@ -1132,7 +1529,7 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '1'):
             # update component parameters for each repeat
             movie_15 = visual.MovieStim3(
                 win=win, name='movie_15',
-                filename=u'/Users/MRIPsychology/Documents/MATLAB/Experiments/Child/stimuli/sv07.mov',
+                filename=u'/Users/sarahcraig/Desktop/ResearchFiles/VCT2/animacy_vids/sv07.mov',
                 ori=0, pos=(0, 0), opacity=1,
                 depth=0.0,
                 )
@@ -1143,6 +1540,18 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '1'):
                     thisComponent.status = NOT_STARTED
 
             # -------Start Routine "sv07"-------
+            """
+            added by sarah
+            """
+            #write to master
+            vidStartTime= videoClock.getTime()
+            file = open("Participant" + expInfo['participant'] +"VideoList.txt", "a+") #a for append
+            file.write(video + '\t' + str( round(vidStartTime, 3 ))+ '\t')
+            file.close() 
+            #write to s videos file
+            file = open("Participant" + expInfo['participant'] +"s_videos.txt", "a+") #a for append
+            file.write(video + '\t' + str( round(vidStartTime, 3 ))+ '\t')
+            file.close() 
             while continueRoutine and routineTimer.getTime() > 0:
                 # get current time
                 t = sv07Clock.getTime()
@@ -1179,6 +1588,22 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '1'):
                     win.flip()
 
             # -------Ending Routine "sv07"-------
+            """
+            added by sarah
+            """
+            #write to master
+            vidEndTime= videoClock.getTime()
+            file = open("Participant" + expInfo['participant'] +"VideoList.txt", "a+") #a for append            
+            file.write( str( round(vidEndTime, 3) )+ '\t')
+            file.write( str( round( (vidEndTime - vidStartTime),3) )+ '\n') 
+            file.close() 
+            #write to s videos file
+            file = open("Participant" + expInfo['participant'] +"s_videos.txt", "a+")
+            file.write( str( round(vidEndTime, 3) )+ '\t')
+            file.write( str( round( (vidEndTime - vidStartTime),3) )+ '\t') 
+            file.write( "1" + '\n' )
+            file.close() 
+            
             for thisComponent in sv07Components:
                 if hasattr(thisComponent, "setAutoDraw"):
                     thisComponent.setAutoDraw(False)
@@ -1193,7 +1618,7 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '1'):
             # update component parameters for each repeat
             movie_16 = visual.MovieStim3(
                 win=win, name='movie_16',
-                filename=u'/Users/MRIPsychology/Documents/MATLAB/Experiments/Child/stimuli/sv08.mov',
+                filename=u'/Users/sarahcraig/Desktop/ResearchFiles/VCT2/animacy_vids/sv08.mov',
                 ori=0, pos=(0, 0), opacity=1,
                 depth=0.0,
                 )
@@ -1204,6 +1629,18 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '1'):
                     thisComponent.status = NOT_STARTED
 
             # -------Start Routine "sv08"-------
+            """
+            added by sarah
+            """
+            #write to master
+            vidStartTime= videoClock.getTime()
+            file = open("Participant" + expInfo['participant'] +"VideoList.txt", "a+") #a for append
+            file.write(video + '\t' + str( round(vidStartTime, 3 ))+ '\t')
+            file.close() 
+            #write to s videos file
+            file = open("Participant" + expInfo['participant'] +"s_videos.txt", "a+") #a for append
+            file.write(video + '\t' + str( round(vidStartTime, 3 ))+ '\t')
+            file.close() 
             while continueRoutine and routineTimer.getTime() > 0:
                 # get current time
                 t = sv08Clock.getTime()
@@ -1240,6 +1677,22 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '1'):
                     win.flip()
 
             # -------Ending Routine "sv08"-------
+            """
+            added by sarah
+            """
+            #write to master
+            vidEndTime= videoClock.getTime()
+            file = open("Participant" + expInfo['participant'] +"VideoList.txt", "a+") #a for append            
+            file.write( str( round(vidEndTime, 3) )+ '\t')
+            file.write( str( round( (vidEndTime - vidStartTime),3) )+ '\n') 
+            file.close() 
+            #write to s videos file
+            file = open("Participant" + expInfo['participant'] +"s_videos.txt", "a+")
+            file.write( str( round(vidEndTime, 3) )+ '\t')
+            file.write( str( round( (vidEndTime - vidStartTime),3) )+ '\t') 
+            file.write( "1" + '\n' )
+            file.close() 
+            
             for thisComponent in sv08Components:
                 if hasattr(thisComponent, "setAutoDraw"):
                     thisComponent.setAutoDraw(False)
@@ -1257,10 +1710,20 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '2'):
     # write a .txt file to record participant's viewing order
     file = open("Participant" + expInfo['participant'] +"VideoList.txt", "w+")
     file.write("Randomization 2: begin with Social video" + '\n')
-    for video in combinedList: 
-        file.write(video + '\n')
     file.close()
-        
+    
+    # make the file for c videos
+    file = open("Participant" + expInfo['participant'] +"c_videos.txt", "w+")
+    file.close()
+    
+    # make the file for the s videos
+    file = open("Participant" + expInfo['participant'] +"s_videos.txt", "w+")
+    file.close()
+    """
+    added by sarah
+    """
+    videoClock = core.Clock()  # to get times for txt files, will time all videos and get their stop/start times
+    videoClock.reset()
     # begin playing videos in combinedList
     for video in combinedList:  
         if (video == 'sv01'): 
@@ -1273,7 +1736,7 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '2'):
             # update component parameters for each repeat
             movie_9 = visual.MovieStim3(
                 win=win, name='movie_9',
-                filename=u'/Users/MRIPsychology/Documents/MATLAB/Experiments/Child/stimuli/sv01.mov',
+                filename=u'/Users/sarahcraig/Desktop/ResearchFiles/VCT2/animacy_vids/sv01.mov',
                 ori=0, pos=(0, 0), opacity=1,
                 depth=0.0,
                 )
@@ -1284,9 +1747,22 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '2'):
                     thisComponent.status = NOT_STARTED
 
             # -------Start Routine "sv01"-------
+                """
+                added by sarah
+                """
+            #write to master
+            vidStartTime= videoClock.getTime()
+            file = open("Participant" + expInfo['participant'] +"VideoList.txt", "a+") #a for append
+            file.write(video + '\t' + str( round(vidStartTime, 3 ))+ '\t')
+            file.close() 
+            #write to s videos file
+            file = open("Participant" + expInfo['participant'] +"s_videos.txt", "a+") #a for append
+            file.write(video + '\t' + str( round(vidStartTime, 3 ))+ '\t')
+            file.close() 
             while continueRoutine and routineTimer.getTime() > 0:
                 # get current time
                 t = sv01Clock.getTime()
+
                 frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
                 # update/draw components on each frame
                 
@@ -1320,6 +1796,22 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '2'):
                     win.flip()
 
             # -------Ending Routine "sv01"-------
+            """
+            added by sarah
+            """
+            #write to master
+            vidEndTime= videoClock.getTime()
+            file = open("Participant" + expInfo['participant'] +"VideoList.txt", "a+") #a for append            
+            file.write( str( round(vidEndTime, 3) )+ '\t')
+            file.write( str( round( (vidEndTime - vidStartTime),3) )+ '\n') 
+            file.close() 
+            #write to s videos file
+            file = open("Participant" + expInfo['participant'] +"s_videos.txt", "a+")
+            file.write( str( round(vidEndTime, 3) )+ '\t')
+            file.write( str( round( (vidEndTime - vidStartTime),3) )+ '\t') 
+            file.write( "1" + '\n' )
+            file.close() 
+            
             for thisComponent in sv01Components:
                 if hasattr(thisComponent, "setAutoDraw"):
                     thisComponent.setAutoDraw(False)
@@ -1334,7 +1826,7 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '2'):
             # update component parameters for each repeat
             movie_10 = visual.MovieStim3(
                 win=win, name='movie_10',
-                filename=u'/Users/MRIPsychology/Documents/MATLAB/Experiments/Child/stimuli/sv02.mov',
+                filename=u'/Users/sarahcraig/Desktop/ResearchFiles/VCT2/animacy_vids/sv02.mov',
                 ori=0, pos=(0, 0), opacity=1,
                 depth=0.0,
                 )
@@ -1345,9 +1837,21 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '2'):
                     thisComponent.status = NOT_STARTED
 
             # -------Start Routine "sv02"-------
+                """
+                added by sarah
+                """
+            vidStartTime= videoClock.getTime()
+            file = open("Participant" + expInfo['participant'] +"VideoList.txt", "a+") #a for append
+            file.write(video + '\t' + str( round( vidStartTime, 3) )+ '\t')
+            file.close() 
+            #write to s videos file
+            file = open("Participant" + expInfo['participant'] +"s_videos.txt", "a+") #a for append
+            file.write(video + '\t' + str( round(vidStartTime, 3 ))+ '\t')
+            file.close() 
             while continueRoutine and routineTimer.getTime() > 0:
                 # get current time
                 t = sv02Clock.getTime()
+             
                 frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
                 # update/draw components on each frame
                 
@@ -1381,6 +1885,21 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '2'):
                     win.flip()
 
             # -------Ending Routine "sv02"-------
+            """
+            added by sarah
+            """
+            vidEndTime= videoClock.getTime()
+            file = open("Participant" + expInfo['participant'] +"VideoList.txt", "a+") #a for append            
+            file.write( str( round(vidEndTime, 3) )+ '\t')
+            file.write( str( round( (vidEndTime - vidStartTime),3) )+ '\n') 
+            file.close() 
+            #write to s videos file
+            file = open("Participant" + expInfo['participant'] +"s_videos.txt", "a+")
+            file.write( str( round(vidEndTime, 3) )+ '\t')
+            file.write( str( round( (vidEndTime - vidStartTime),3) )+ '\t') 
+            file.write( "1" + '\n' )
+            file.close() 
+            
             for thisComponent in sv02Components:
                 if hasattr(thisComponent, "setAutoDraw"):
                     thisComponent.setAutoDraw(False)
@@ -1395,7 +1914,7 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '2'):
             # update component parameters for each repeat
             movie_11 = visual.MovieStim3(
                 win=win, name='movie_11',
-                filename=u'/Users/MRIPsychology/Documents/MATLAB/Experiments/Child/stimuli/sv03.mov',
+                filename=u'/Users/sarahcraig/Desktop/ResearchFiles/VCT2/animacy_vids/sv03.mov',
                 ori=0, pos=(0, 0), opacity=1,
                 depth=0.0,
                 )
@@ -1406,9 +1925,21 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '2'):
                     thisComponent.status = NOT_STARTED
 
             # -------Start Routine "sv03"-------
+                """
+                added by sarah
+                """
+            vidStartTime= videoClock.getTime()
+            file = open("Participant" + expInfo['participant'] +"VideoList.txt", "a+") #a for append
+            file.write(video + '\t' + str( round(vidStartTime, 3) )+ '\t')
+            file.close() 
+            #write to s videos file
+            file = open("Participant" + expInfo['participant'] +"s_videos.txt", "a+") #a for append
+            file.write(video + '\t' + str( round(vidStartTime, 3 ))+ '\t')
+            file.close() 
             while continueRoutine and routineTimer.getTime() > 0:
                 # get current time
                 t = sv03Clock.getTime()
+                
                 frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
                 # update/draw components on each frame
                 
@@ -1442,6 +1973,22 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '2'):
                     win.flip()
 
             # -------Ending Routine "sv03"-------
+            """
+            added by sarah
+            """
+            #write to master file
+            vidEndTime= videoClock.getTime()
+            file = open("Participant" + expInfo['participant'] +"VideoList.txt", "a+") #a for append            
+            file.write( str( round(vidEndTime, 3) )+ '\t')
+            file.write( str( round( (vidEndTime - vidStartTime),3) )+ '\n') 
+            file.close() 
+            #write to s videos file
+            file = open("Participant" + expInfo['participant'] +"s_videos.txt", "a+")
+            file.write( str( round(vidEndTime, 3) )+ '\t')
+            file.write( str( round( (vidEndTime - vidStartTime),3) )+ '\t') 
+            file.write( "1" + '\n' )
+            file.close() 
+            
             for thisComponent in sv03Components:
                 if hasattr(thisComponent, "setAutoDraw"):
                     thisComponent.setAutoDraw(False)
@@ -1456,7 +2003,7 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '2'):
             # update component parameters for each repeat
             movie_12 = visual.MovieStim3(
                 win=win, name='movie_12',
-                filename=u'/Users/MRIPsychology/Documents/MATLAB/Experiments/Child/stimuli/sv04.mov',
+                filename=u'/Users/sarahcraig/Desktop/ResearchFiles/VCT2/animacy_vids/sv04.mov',
                 ori=0, pos=(0, 0), opacity=1,
                 depth=0.0,
                 )
@@ -1467,9 +2014,21 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '2'):
                     thisComponent.status = NOT_STARTED
 
             # -------Start Routine "sv04"-------
+                """
+                added by sarah
+                """
+            vidStartTime= videoClock.getTime()
+            file = open("Participant" + expInfo['participant'] +"VideoList.txt", "a+") #a for append
+            file.write(video + '\t' + str( round( vidStartTime, 3) )+ '\t')
+            file.close() 
+            #write to s videos file
+            file = open("Participant" + expInfo['participant'] +"s_videos.txt", "a+") #a for append
+            file.write(video + '\t' + str( round(vidStartTime, 3 ))+ '\t')
+            file.close() 
             while continueRoutine and routineTimer.getTime() > 0:
                 # get current time
                 t = sv04Clock.getTime()
+
                 frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
                 # update/draw components on each frame
                 
@@ -1503,6 +2062,21 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '2'):
                     win.flip()
 
             # -------Ending Routine "sv04"-------
+            """
+            added by sarah
+            """
+            vidEndTime= videoClock.getTime()
+            file = open("Participant" + expInfo['participant'] +"VideoList.txt", "a+") #a for append            
+            file.write( str( round(vidEndTime, 3) )+ '\t')
+            file.write( str( round( (vidEndTime - vidStartTime),3) )+ '\n') 
+            file.close() 
+            #write to s videos file
+            file = open("Participant" + expInfo['participant'] +"s_videos.txt", "a+")
+            file.write( str( round(vidEndTime, 3) )+ '\t')
+            file.write( str( round( (vidEndTime - vidStartTime),3) )+ '\t') 
+            file.write( "1" + '\n' )
+            file.close() 
+            
             for thisComponent in sv04Components:
                 if hasattr(thisComponent, "setAutoDraw"):
                     thisComponent.setAutoDraw(False)
@@ -1517,7 +2091,7 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '2'):
             # update component parameters for each repeat
             movie_13 = visual.MovieStim3(
                 win=win, name='movie_13',
-                filename=u'/Users/MRIPsychology/Documents/MATLAB/Experiments/Child/stimuli/sv05.mov',
+                filename=u'/Users/sarahcraig/Desktop/ResearchFiles/VCT2/animacy_vids/sv05.mov',
                 ori=0, pos=(0, 0), opacity=1,
                 depth=0.0,
                 )
@@ -1528,9 +2102,21 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '2'):
                     thisComponent.status = NOT_STARTED
 
             # -------Start Routine "sv05"-------
+                """
+                added by sarah
+                """
+            vidStartTime= videoClock.getTime()
+            file = open("Participant" + expInfo['participant'] +"VideoList.txt", "a+") #a for append
+            file.write(video + '\t' + str( round( vidStartTime, 3) )+ '\t')
+            file.close() 
+            #write to s videos file
+            file = open("Participant" + expInfo['participant'] +"s_videos.txt", "a+") #a for append
+            file.write(video + '\t' + str( round(vidStartTime, 3 ))+ '\t')
+            file.close() 
             while continueRoutine and routineTimer.getTime() > 0:
                 # get current time
                 t = sv05Clock.getTime()
+
                 frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
                 # update/draw components on each frame
                 
@@ -1564,6 +2150,21 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '2'):
                     win.flip()
 
             # -------Ending Routine "sv05"-------
+            """
+            added by sarah
+            """
+            vidEndTime= videoClock.getTime()
+            file = open("Participant" + expInfo['participant'] +"VideoList.txt", "a+") #a for append            
+            file.write( str( round(vidEndTime, 3) )+ '\t')
+            file.write( str( round( (vidEndTime - vidStartTime),3) )+ '\n') 
+            file.close() 
+            #write to s videos file
+            file = open("Participant" + expInfo['participant'] +"s_videos.txt", "a+")
+            file.write( str( round(vidEndTime, 3) )+ '\t')
+            file.write( str( round( (vidEndTime - vidStartTime),3) )+ '\t') 
+            file.write( "1" + '\n' )
+            file.close() 
+            
             for thisComponent in sv05Components:
                 if hasattr(thisComponent, "setAutoDraw"):
                     thisComponent.setAutoDraw(False)
@@ -1578,7 +2179,7 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '2'):
             # update component parameters for each repeat
             movie_14 = visual.MovieStim3(
                 win=win, name='movie_14',
-                filename=u'/Users/MRIPsychology/Documents/MATLAB/Experiments/Child/stimuli/sv06.mov',
+                filename=u'/Users/sarahcraig/Desktop/ResearchFiles/VCT2/animacy_vids/sv06.mov',
                 ori=0, pos=(0, 0), opacity=1,
                 depth=0.0,
                 )
@@ -1589,9 +2190,21 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '2'):
                     thisComponent.status = NOT_STARTED
 
             # -------Start Routine "sv06"-------
+                """
+                added by sarah
+                """
+            vidStartTime= videoClock.getTime()
+            file = open("Participant" + expInfo['participant'] +"VideoList.txt", "a+") #a for append
+            file.write(video + '\t' + str( round( vidStartTime, 3) )+ '\t')
+            file.close() 
+            #write to s videos file
+            file = open("Participant" + expInfo['participant'] +"s_videos.txt", "a+") #a for append
+            file.write(video + '\t' + str( round(vidStartTime, 3 ))+ '\t')
+            file.close() 
             while continueRoutine and routineTimer.getTime() > 0:
                 # get current time
                 t = sv06Clock.getTime()
+
                 frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
                 # update/draw components on each frame
                 
@@ -1625,6 +2238,21 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '2'):
                     win.flip()
 
             # -------Ending Routine "sv06"-------
+            """
+            added by sarah
+            """
+            vidEndTime= videoClock.getTime()
+            file = open("Participant" + expInfo['participant'] +"VideoList.txt", "a+") #a for append            
+            file.write( str( round(vidEndTime, 3) )+ '\t')
+            file.write( str( round( (vidEndTime - vidStartTime),3) )+ '\n') 
+            file.close() 
+            #write to s videos file
+            file = open("Participant" + expInfo['participant'] +"s_videos.txt", "a+")
+            file.write( str( round(vidEndTime, 3) )+ '\t')
+            file.write( str( round( (vidEndTime - vidStartTime),3) )+ '\t') 
+            file.write( "1" + '\n' )
+            file.close() 
+            
             for thisComponent in sv06Components:
                 if hasattr(thisComponent, "setAutoDraw"):
                     thisComponent.setAutoDraw(False)
@@ -1639,7 +2267,7 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '2'):
             # update component parameters for each repeat
             movie_15 = visual.MovieStim3(
                 win=win, name='movie_15',
-                filename=u'/Users/MRIPsychology/Documents/MATLAB/Experiments/Child/stimuli/sv07.mov',
+                filename=u'/Users/sarahcraig/Desktop/ResearchFiles/VCT2/animacy_vids/sv07.mov',
                 ori=0, pos=(0, 0), opacity=1,
                 depth=0.0,
                 )
@@ -1650,9 +2278,21 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '2'):
                     thisComponent.status = NOT_STARTED
 
             # -------Start Routine "sv07"-------
+                """
+                added by sarah
+                """
+            vidStartTime= videoClock.getTime()
+            file = open("Participant" + expInfo['participant'] +"VideoList.txt", "a+") #a for append
+            file.write(video + '\t' + str( round( vidStartTime,3) )+ '\t')
+            file.close() 
+            #write to s videos file
+            file = open("Participant" + expInfo['participant'] +"s_videos.txt", "a+") #a for append
+            file.write(video + '\t' + str( round(vidStartTime, 3 ))+ '\t')
+            file.close() 
             while continueRoutine and routineTimer.getTime() > 0:
                 # get current time
                 t = sv07Clock.getTime()
+                
                 frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
                 # update/draw components on each frame
                 
@@ -1686,6 +2326,22 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '2'):
                     win.flip()
 
             # -------Ending Routine "sv07"-------
+            """
+            added by sarah
+            """
+            vidEndTime= videoClock.getTime()
+            file = open("Participant" + expInfo['participant'] +"VideoList.txt", "a+") #a for append            
+            file.write( str( round(vidEndTime, 3) )+ '\t')
+            file.write( str( round( (vidEndTime - vidStartTime),3) )+ '\n') 
+            file.close() 
+            
+            #write to s videos file
+            file = open("Participant" + expInfo['participant'] +"s_videos.txt", "a+")
+            file.write( str( round(vidEndTime, 3) )+ '\t')
+            file.write( str( round( (vidEndTime - vidStartTime),3) )+ '\t') 
+            file.write( "1" + '\n' )
+            file.close() 
+            
             for thisComponent in sv07Components:
                 if hasattr(thisComponent, "setAutoDraw"):
                     thisComponent.setAutoDraw(False)
@@ -1700,7 +2356,7 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '2'):
             # update component parameters for each repeat
             movie_16 = visual.MovieStim3(
                 win=win, name='movie_16',
-                filename=u'/Users/MRIPsychology/Documents/MATLAB/Experiments/Child/stimuli/sv08.mov',
+                filename=u'/Users/sarahcraig/Desktop/ResearchFiles/VCT2/animacy_vids/sv08.mov',
                 ori=0, pos=(0, 0), opacity=1,
                 depth=0.0,
                 )
@@ -1711,9 +2367,21 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '2'):
                     thisComponent.status = NOT_STARTED
 
             # -------Start Routine "sv08"-------
+                """
+                added by sarah
+                """
+            vidStartTime= videoClock.getTime()
+            file = open("Participant" + expInfo['participant'] +"VideoList.txt", "a+") #a for append
+            file.write(video + '\t' + str( round(vidStartTime,3))+ '\t')
+            file.close() 
+            #write to s videos file
+            file = open("Participant" + expInfo['participant'] +"s_videos.txt", "a+") #a for append
+            file.write(video + '\t' + str( round(vidStartTime, 3 ))+ '\t')
+            file.close() 
             while continueRoutine and routineTimer.getTime() > 0:
                 # get current time
                 t = sv08Clock.getTime()
+
                 frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
                 # update/draw components on each frame
                 
@@ -1747,6 +2415,21 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '2'):
                     win.flip()
 
             # -------Ending Routine "sv08"-------
+            """
+            added by sarah
+            """
+            vidEndTime= videoClock.getTime()
+            file = open("Participant" + expInfo['participant'] +"VideoList.txt", "a+") #a for append            
+            file.write( str( round(vidEndTime, 3) )+ '\t')
+            file.write( str( round( (vidEndTime - vidStartTime),3) )+ '\n') 
+            file.close()  
+            #write to s videos file
+            file = open("Participant" + expInfo['participant'] +"s_videos.txt", "a+")
+            file.write( str( round(vidEndTime, 3) )+ '\t')
+            file.write( str( round( (vidEndTime - vidStartTime),3) )+ '\t') 
+            file.write( "1" + '\n' )
+            file.close() 
+            
             for thisComponent in sv08Components:
                 if hasattr(thisComponent, "setAutoDraw"):
                     thisComponent.setAutoDraw(False)
@@ -1761,7 +2444,7 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '2'):
             # update component parameters for each repeat
             movie = visual.MovieStim3(
                 win=win, name='movie',
-                filename=u'/Users/MRIPsychology/Documents/MATLAB/Experiments/Child/stimuli/cv01.mov',
+                filename=u'/Users/sarahcraig/Desktop/ResearchFiles/VCT2/animacy_vids/cv01.mov',
                 ori=0, pos=(0, 0), opacity=1,
                 depth=0.0,
                 )
@@ -1772,9 +2455,21 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '2'):
                     thisComponent.status = NOT_STARTED
 
             # -------Start Routine "cv01"-------
+                """
+                added by sarah
+                """
+            vidStartTime= videoClock.getTime()
+            file = open("Participant" + expInfo['participant'] +"VideoList.txt", "a+") #a for append
+            file.write(video + '\t' + str( round(vidStartTime,3) )+ '\t')
+            file.close() 
+            #write to c videos file
+            file = open("Participant" + expInfo['participant'] +"c_videos.txt", "a+") #a for append
+            file.write(video + '\t' + str( round(vidStartTime, 3 ))+ '\t')
+            file.close() 
             while continueRoutine and routineTimer.getTime() > 0:
                 # get current time
                 t = cv01Clock.getTime()
+
                 frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
                 # update/draw components on each frame
                 
@@ -1808,6 +2503,22 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '2'):
                     win.flip()
 
             # -------Ending Routine "cv01"-------
+            """
+            added by sarah
+            """
+            vidEndTime= videoClock.getTime()
+            file = open("Participant" + expInfo['participant'] +"VideoList.txt", "a+") #a for append            
+            file.write( str( round(vidEndTime, 3) )+ '\t')
+            file.write( str( round( (vidEndTime - vidStartTime),3) )+ '\n') 
+            file.close() 
+            
+            #write to c videos file
+            file = open("Participant" + expInfo['participant'] +"c_videos.txt", "a+")
+            file.write( str( round(vidEndTime, 3) )+ '\t')
+            file.write( str( round( (vidEndTime - vidStartTime),3) )+ '\t') 
+            file.write( "1" + '\n' )
+            file.close() 
+            
             for thisComponent in cv01Components:
                 if hasattr(thisComponent, "setAutoDraw"):
                     thisComponent.setAutoDraw(False)
@@ -1822,7 +2533,7 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '2'):
             # update component parameters for each repeat
             movie_2 = visual.MovieStim3(
                 win=win, name='movie_2',
-                filename=u'/Users/MRIPsychology/Documents/MATLAB/Experiments/Child/stimuli/cv02.mov',
+                filename=u'/Users/sarahcraig/Desktop/ResearchFiles/VCT2/animacy_vids/cv02.mov',
                 ori=0, pos=(0, 0), opacity=1,
                 depth=0.0,
                 )
@@ -1833,9 +2544,21 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '2'):
                     thisComponent.status = NOT_STARTED
 
             # -------Start Routine "cv02"-------
+                """
+                added by sarah
+                """
+            vidStartTime= videoClock.getTime()
+            file = open("Participant" + expInfo['participant'] +"VideoList.txt", "a+") #a for append
+            file.write(video + '\t' + str( round(vidStartTime,3))+ '\t')
+            file.close() 
+            #write to c videos file
+            file = open("Participant" + expInfo['participant'] +"c_videos.txt", "a+") #a for append
+            file.write(video + '\t' + str( round(vidStartTime, 3 ))+ '\t')
+            file.close() 
             while continueRoutine and routineTimer.getTime() > 0:
                 # get current time
                 t = cv02Clock.getTime()
+
                 frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
                 # update/draw components on each frame
                 
@@ -1869,6 +2592,21 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '2'):
                     win.flip()
 
             # -------Ending Routine "cv02"-------
+            """
+            added by sarah
+            """
+            vidEndTime= videoClock.getTime()
+            file = open("Participant" + expInfo['participant'] +"VideoList.txt", "a+") #a for append            
+            file.write( str( round(vidEndTime, 3) )+ '\t')
+            file.write( str( round( (vidEndTime - vidStartTime),3) )+ '\n') 
+            file.close() 
+            #write to c videos file
+            file = open("Participant" + expInfo['participant'] +"c_videos.txt", "a+")
+            file.write( str( round(vidEndTime, 3) )+ '\t')
+            file.write( str( round( (vidEndTime - vidStartTime),3) )+ '\t') 
+            file.write( "1" + '\n' )
+            file.close() 
+            
             for thisComponent in cv02Components:
                 if hasattr(thisComponent, "setAutoDraw"):
                     thisComponent.setAutoDraw(False)
@@ -1883,7 +2621,7 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '2'):
             # update component parameters for each repeat
             movie_3 = visual.MovieStim3(
                 win=win, name='movie_3',
-                filename=u'/Users/MRIPsychology/Documents/MATLAB/Experiments/Child/stimuli/cv03.mov',
+                filename=u'/Users/sarahcraig/Desktop/ResearchFiles/VCT2/animacy_vids/cv03.mov',
                 ori=0, pos=(0, 0), opacity=1,
                 depth=0.0,
                 )
@@ -1894,9 +2632,21 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '2'):
                     thisComponent.status = NOT_STARTED
 
             # -------Start Routine "cv03"-------
+                """
+                added by sarah
+                """
+            vidStartTime= videoClock.getTime()
+            file = open("Participant" + expInfo['participant'] +"VideoList.txt", "a+") #a for append
+            file.write(video + '\t' + str( round(vidStartTime,3))+ '\t')
+            file.close() 
+            #write to c videos file
+            file = open("Participant" + expInfo['participant'] +"c_videos.txt", "a+") #a for append
+            file.write(video + '\t' + str( round(vidStartTime, 3 ))+ '\t')
+            file.close() 
             while continueRoutine and routineTimer.getTime() > 0:
                 # get current time
                 t = cv03Clock.getTime()
+                
                 frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
                 # update/draw components on each frame
                 
@@ -1930,6 +2680,21 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '2'):
                     win.flip()
 
             # -------Ending Routine "cv03"-------
+            """
+            added by sarah
+            """
+            vidEndTime= videoClock.getTime()
+            file = open("Participant" + expInfo['participant'] +"VideoList.txt", "a+") #a for append            
+            file.write( str( round(vidEndTime, 3) )+ '\t')
+            file.write( str( round( (vidEndTime - vidStartTime),3) )+ '\n') 
+            file.close() 
+            #write to c videos file
+            file = open("Participant" + expInfo['participant'] +"c_videos.txt", "a+")
+            file.write( str( round(vidEndTime, 3) )+ '\t')
+            file.write( str( round( (vidEndTime - vidStartTime),3) )+ '\t') 
+            file.write( "1" + '\n' )
+            file.close() 
+            
             for thisComponent in cv03Components:
                 if hasattr(thisComponent, "setAutoDraw"):
                     thisComponent.setAutoDraw(False)
@@ -1944,7 +2709,7 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '2'):
             # update component parameters for each repeat
             movie_4 = visual.MovieStim3(
                 win=win, name='movie_4',
-                filename=u'/Users/MRIPsychology/Documents/MATLAB/Experiments/Child/stimuli/cv04.mov',
+                filename=u'/Users/sarahcraig/Desktop/ResearchFiles/VCT2/animacy_vids/cv04.mov',
                 ori=0, pos=(0, 0), opacity=1,
                 depth=0.0,
                 )
@@ -1955,9 +2720,22 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '2'):
                     thisComponent.status = NOT_STARTED
 
             # -------Start Routine "cv04"-------
+                """
+                added by sarah
+                """
+            vidStartTime= videoClock.getTime()
+            file = open("Participant" + expInfo['participant'] +"VideoList.txt", "a+") #a for append
+            file.write(video + '\t' + str( round(vidStartTime,3))+ '\t')
+            file.close() 
+            #write to c videos file
+            file = open("Participant" + expInfo['participant'] +"c_videos.txt", "a+") #a for append
+            file.write(video + '\t' + str( round(vidStartTime, 3 ))+ '\t')
+            file.close() 
+
             while continueRoutine and routineTimer.getTime() > 0:
                 # get current time
                 t = cv04Clock.getTime()
+       
                 frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
                 # update/draw components on each frame
                 
@@ -1991,6 +2769,21 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '2'):
                     win.flip()
 
             # -------Ending Routine "cv04"-------
+            """
+            added by sarah
+            """
+            vidEndTime= videoClock.getTime()
+            file = open("Participant" + expInfo['participant'] +"VideoList.txt", "a+") #a for append            
+            file.write( str( round(vidEndTime, 3) )+ '\t')
+            file.write( str( round( (vidEndTime - vidStartTime),3) )+ '\n') 
+            file.close()  
+            #write to c videos file
+            file = open("Participant" + expInfo['participant'] +"c_videos.txt", "a+")
+            file.write( str( round(vidEndTime, 3) )+ '\t')
+            file.write( str( round( (vidEndTime - vidStartTime),3) )+ '\t') 
+            file.write( "1" + '\n' )
+            file.close() 
+            
             for thisComponent in cv04Components:
                 if hasattr(thisComponent, "setAutoDraw"):
                     thisComponent.setAutoDraw(False)
@@ -2005,7 +2798,7 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '2'):
             # update component parameters for each repeat
             movie_5 = visual.MovieStim3(
                 win=win, name='movie_5',
-                filename=u'/Users/MRIPsychology/Documents/MATLAB/Experiments/Child/stimuli/cv05.mov',
+                filename=u'/Users/sarahcraig/Desktop/ResearchFiles/VCT2/animacy_vids/cv05.mov',
                 ori=0, pos=(0, 0), opacity=1,
                 depth=0.0,
                 )
@@ -2016,9 +2809,21 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '2'):
                     thisComponent.status = NOT_STARTED
 
             # -------Start Routine "cv05"-------
+                """
+                added by sarah
+                """
+            vidStartTime= videoClock.getTime()
+            file = open("Participant" + expInfo['participant'] +"VideoList.txt", "a+") #a for append
+            file.write(video + '\t' + str( round(vidStartTime, 3))+ '\t')
+            file.close() 
+            #write to c videos file
+            file = open("Participant" + expInfo['participant'] +"c_videos.txt", "a+") #a for append
+            file.write(video + '\t' + str( round(vidStartTime, 3 ))+ '\t')
+            file.close() 
             while continueRoutine and routineTimer.getTime() > 0:
                 # get current time
                 t = cv05Clock.getTime()
+                
                 frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
                 # update/draw components on each frame
                 
@@ -2052,6 +2857,21 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '2'):
                     win.flip()
 
             # -------Ending Routine "cv05"-------
+            """
+            added by sarah
+            """
+            vidEndTime= videoClock.getTime()
+            file = open("Participant" + expInfo['participant'] +"VideoList.txt", "a+") #a for append            
+            file.write( str( round(vidEndTime, 3) )+ '\t')
+            file.write( str( round( (vidEndTime - vidStartTime),3) )+ '\n') 
+            file.close() 
+            #write to c videos file
+            file = open("Participant" + expInfo['participant'] +"c_videos.txt", "a+")
+            file.write( str( round(vidEndTime, 3) )+ '\t')
+            file.write( str( round( (vidEndTime - vidStartTime),3) )+ '\t') 
+            file.write( "1" + '\n' )
+            file.close() 
+            
             for thisComponent in cv05Components:
                 if hasattr(thisComponent, "setAutoDraw"):
                     thisComponent.setAutoDraw(False)
@@ -2066,7 +2886,7 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '2'):
             # update component parameters for each repeat
             movie_6 = visual.MovieStim3(
                 win=win, name='movie_6',
-                filename=u'/Users/MRIPsychology/Documents/MATLAB/Experiments/Child/stimuli/cv06.mov',
+                filename=u'/Users/sarahcraig/Desktop/ResearchFiles/VCT2/animacy_vids/cv06.mov',
                 ori=0, pos=(0, 0), opacity=1,
                 depth=0.0,
                 )
@@ -2077,9 +2897,21 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '2'):
                     thisComponent.status = NOT_STARTED
 
             # -------Start Routine "cv06"-------
+                """
+                added by sarah
+                """
+            vidStartTime= videoClock.getTime()
+            file = open("Participant" + expInfo['participant'] +"VideoList.txt", "a+") #a for append
+            file.write(video + '\t' + str( round(vidStartTime,3))+ '\t')
+            file.close() 
+            #write to c videos file
+            file = open("Participant" + expInfo['participant'] +"c_videos.txt", "a+") #a for append
+            file.write(video + '\t' + str( round(vidStartTime, 3 ))+ '\t')
+            file.close() 
             while continueRoutine and routineTimer.getTime() > 0:
                 # get current time
                 t = cv06Clock.getTime()
+                
                 frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
                 # update/draw components on each frame
                 
@@ -2113,6 +2945,21 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '2'):
                     win.flip()
 
             # -------Ending Routine "cv06"-------
+            """
+            added by sarah
+            """
+            vidEndTime= videoClock.getTime()
+            file = open("Participant" + expInfo['participant'] +"VideoList.txt", "a+") #a for append            
+            file.write( str( round(vidEndTime, 3) )+ '\t')
+            file.write( str( round( (vidEndTime - vidStartTime),3) )+ '\n') 
+            file.close() 
+            #write to c videos file
+            file = open("Participant" + expInfo['participant'] +"c_videos.txt", "a+")
+            file.write( str( round(vidEndTime, 3) )+ '\t')
+            file.write( str( round( (vidEndTime - vidStartTime),3) )+ '\t') 
+            file.write( "1" + '\n' )
+            file.close() 
+            
             for thisComponent in cv06Components:
                 if hasattr(thisComponent, "setAutoDraw"):
                     thisComponent.setAutoDraw(False)
@@ -2127,7 +2974,7 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '2'):
             # update component parameters for each repeat
             movie_7 = visual.MovieStim3(
                 win=win, name='movie_7',
-                filename=u'/Users/MRIPsychology/Documents/MATLAB/Experiments/Child/stimuli/cv07.mov',
+                filename=u'/Users/sarahcraig/Desktop/ResearchFiles/VCT2/animacy_vids/cv07.mov',
                 ori=0, pos=(0, 0), opacity=1,
                 depth=0.0,
                 )
@@ -2138,9 +2985,21 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '2'):
                     thisComponent.status = NOT_STARTED
 
             # -------Start Routine "cv07"-------
+                """
+                added by sarah
+                """
+            vidStartTime= videoClock.getTime()
+            file = open("Participant" + expInfo['participant'] +"VideoList.txt", "a+") #a for append
+            file.write(video + '\t' + str( round(vidStartTime,3))+ '\t')
+            file.close() 
+            #write to c videos file
+            file = open("Participant" + expInfo['participant'] +"c_videos.txt", "a+") #a for append
+            file.write(video + '\t' + str( round(vidStartTime, 3 ))+ '\t')
+            file.close() 
             while continueRoutine and routineTimer.getTime() > 0:
                 # get current time
                 t = cv07Clock.getTime()
+                
                 frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
                 # update/draw components on each frame
                 
@@ -2174,6 +3033,21 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '2'):
                     win.flip()
 
             # -------Ending Routine "cv07"-------
+            """
+            added by sarah
+            """
+            vidEndTime= videoClock.getTime()
+            file = open("Participant" + expInfo['participant'] +"VideoList.txt", "a+") #a for append            
+            file.write( str( round(vidEndTime, 3) )+ '\t')
+            file.write( str( round( (vidEndTime - vidStartTime),3) )+ '\n') 
+            file.close() 
+            #write to c videos file
+            file = open("Participant" + expInfo['participant'] +"c_videos.txt", "a+")
+            file.write( str( round(vidEndTime, 3) )+ '\t')
+            file.write( str( round( (vidEndTime - vidStartTime),3) )+ '\t') 
+            file.write( "1" + '\n' )
+            file.close() 
+            
             for thisComponent in cv07Components:
                 if hasattr(thisComponent, "setAutoDraw"):
                     thisComponent.setAutoDraw(False)
@@ -2188,7 +3062,7 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '2'):
             # update component parameters for each repeat
             movie_8 = visual.MovieStim3(
                 win=win, name='movie_8',
-                filename=u'/Users/MRIPsychology/Documents/MATLAB/Experiments/Child/stimuli/cv08.mov',
+                filename=u'/Users/sarahcraig/Desktop/ResearchFiles/VCT2/animacy_vids/cv08.mov',
                 ori=0, pos=(0, 0), opacity=1,
                 depth=0.0,
                 )
@@ -2199,9 +3073,21 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '2'):
                     thisComponent.status = NOT_STARTED
 
             # -------Start Routine "cv08"-------
+                """
+                added by sarah
+                """
+            vidStartTime= videoClock.getTime()
+            file = open("Participant" + expInfo['participant'] +"VideoList.txt", "a+") #a for append
+            file.write(video + '\t' + str( round(vidStartTime,3))+ '\t')
+            file.close()            
+            #write to c videos file
+            file = open("Participant" + expInfo['participant'] +"c_videos.txt", "a+") #a for append
+            file.write(video + '\t' + str( round(vidStartTime, 3 ))+ '\t')
+            file.close() 
             while continueRoutine and routineTimer.getTime() > 0:
                 # get current time
                 t = cv08Clock.getTime()
+              
                 frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
                 # update/draw components on each frame
                 
@@ -2235,6 +3121,21 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '2'):
                     win.flip()
 
             # -------Ending Routine "cv08"-------
+            """
+            added by sarah
+            """
+            vidEndTime= videoClock.getTime()
+            file = open("Participant" + expInfo['participant'] +"VideoList.txt", "a+") #a for append            
+            file.write( str( round(vidEndTime, 3) )+ '\t')
+            file.write( str( round( (vidEndTime - vidStartTime),3) )+ '\n') 
+            file.close() 
+            #write to c videos file
+            file = open("Participant" + expInfo['participant'] +"c_videos.txt", "a+")
+            file.write( str( round(vidEndTime, 3) )+ '\t')
+            file.write( str( round( (vidEndTime - vidStartTime),3) )+ '\t') 
+            file.write( "1" + '\n' )
+            file.close() 
+            
             for thisComponent in cv08Components:
                 if hasattr(thisComponent, "setAutoDraw"):
                     thisComponent.setAutoDraw(False)
