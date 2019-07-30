@@ -288,7 +288,7 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '1'):
             # update component parameters for each repeat
             movie = visual.MovieStim3(
                 win=win, name='movie',
-                filename=u'/Users/sarahcraig/Desktop/ResearchFiles/VCT2/animacy_vids/cv01.mov',
+                filename=u'/Users/MRIPsychology/Documents/MATLAB/Experiments/Child/stimuli/cv01.mov',
                 ori=0, pos=(0, 0), opacity=1,
                 depth=0.0,
                 )
@@ -376,7 +376,7 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '1'):
             # update component parameters for each repeat
             movie_2 = visual.MovieStim3(
                 win=win, name='movie_2',
-                filename=u'/Users/sarahcraig/Desktop/ResearchFiles/VCT2/animacy_vids/cv02.mov',
+                filename=u'/Users/MRIPsychology/Documents/MATLAB/Experiments/Child/Stimuli/cv02.mov',
                 ori=0, pos=(0, 0), opacity=1,
                 depth=0.0,
                 )
@@ -464,7 +464,7 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '1'):
             # update component parameters for each repeat
             movie_3 = visual.MovieStim3(
                 win=win, name='movie_3',
-                filename=u'/Users/sarahcraig/Desktop/ResearchFiles/VCT2/animacy_vids/cv03.mov',
+                filename=u'/Users/MRIPsychology/Documents/MATLAB/Experiments/Child/Stimuli/cv03.mov',
                 ori=0, pos=(0, 0), opacity=1,
                 depth=0.0,
                 )
@@ -552,7 +552,7 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '1'):
             # update component parameters for each repeat
             movie_4 = visual.MovieStim3(
                 win=win, name='movie_4',
-                filename=u'/Users/sarahcraig/Desktop/ResearchFiles/VCT2/animacy_vids/cv04.mov',
+                filename=u'/Users/MRIPsychology/Documents/MATLAB/Experiments/Child/stimuli/cv04.mov',
                 ori=0, pos=(0, 0), opacity=1,
                 depth=0.0,
                 )
@@ -640,7 +640,7 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '1'):
             # update component parameters for each repeat
             movie_5 = visual.MovieStim3(
                 win=win, name='movie_5',
-                filename=u'/Users/sarahcraig/Desktop/ResearchFiles/VCT2/animacy_vids/cv05.mov',
+                filename=u'/Users/MRIPsychology/Documents/MATLAB/Experiments/Child/stimuli/cv05.mov',
                 ori=0, pos=(0, 0), opacity=1,
                 depth=0.0,
                 )
@@ -728,7 +728,7 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '1'):
             # update component parameters for each repeat
             movie_6 = visual.MovieStim3(
                 win=win, name='movie_6',
-                filename=u'/Users/sarahcraig/Desktop/ResearchFiles/VCT2/animacy_vids/cv06.mov',
+                filename=u'/Users/MRIPsychology/Documents/MATLAB/Experiments/Child/stimuli/cv06.mov',
                 ori=0, pos=(0, 0), opacity=1,
                 depth=0.0,
                 )
@@ -817,7 +817,7 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '1'):
             # update component parameters for each repeat
             movie_7 = visual.MovieStim3(
                 win=win, name='movie_7',
-                filename=u'/Users/sarahcraig/Desktop/ResearchFiles/VCT2/animacy_vids/cv07.mov',
+                filename=u'/Users/MRIPsychology/Documents/MATLAB/Experiments/Child/stimuli/cv07.mov',
                 ori=0, pos=(0, 0), opacity=1,
                 depth=0.0,
                 )
@@ -906,7 +906,7 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '1'):
             # update component parameters for each repeat
             movie_8 = visual.MovieStim3(
                 win=win, name='movie_8',
-                filename=u'/Users/sarahcraig/Desktop/ResearchFiles/VCT2/animacy_vids/cv08.mov',
+                filename=u'/Users/MRIPsychology/Documents/MATLAB/Experiments/Child/stimuli/cv08.mov',
                 ori=0, pos=(0, 0), opacity=1,
                 depth=0.0,
                 )
@@ -995,7 +995,7 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '1'):
             # update component parameters for each repeat
             movie_9 = visual.MovieStim3(
                 win=win, name='movie_9',
-                filename=u'/Users/sarahcraig/Desktop/ResearchFiles/VCT2/animacy_vids/sv01.mov',
+                filename=u'/Users/MRIPsychology/Documents/MATLAB/Experiments/Child/stimuli/sv01.mov',
                 ori=0, pos=(0, 0), opacity=1,
                 depth=0.0,
                 )
@@ -1084,7 +1084,7 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '1'):
             # update component parameters for each repeat
             movie_10 = visual.MovieStim3(
                 win=win, name='movie_10',
-                filename=u'/Users/sarahcraig/Desktop/ResearchFiles/VCT2/animacy_vids/sv02.mov',
+                filename=u'/Users/MRIPsychology/Documents/MATLAB/Experiments/Child/stimuli/sv02.mov',
                 ori=0, pos=(0, 0), opacity=1,
                 depth=0.0,
                 )
@@ -1173,7 +1173,7 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '1'):
             # update component parameters for each repeat
             movie_11 = visual.MovieStim3(
                 win=win, name='movie_11',
-                filename=u'/Users/sarahcraig/Desktop/ResearchFiles/VCT2/animacy_vids/sv03.mov',
+                filename=u'/Users/MRIPsychology/Documents/MATLAB/Experiments/Child/stimuli/sv03.mov',
                 ori=0, pos=(0, 0), opacity=1,
                 depth=0.0,
                 )
@@ -1262,7 +1262,7 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '1'):
             # update component parameters for each repeat
             movie_12 = visual.MovieStim3(
                 win=win, name='movie_12',
-                filename=u'/Users/sarahcraig/Desktop/ResearchFiles/VCT2/animacy_vids/sv04.mov',
+                filename=u'/Users/MRIPsychology/Documents/MATLAB/Experiments/Child/stimuli/sv04.mov',
                 ori=0, pos=(0, 0), opacity=1,
                 depth=0.0,
                 )
@@ -1351,7 +1351,7 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '1'):
             # update component parameters for each repeat
             movie_13 = visual.MovieStim3(
                 win=win, name='movie_13',
-                filename=u'/Users/sarahcraig/Desktop/ResearchFiles/VCT2/animacy_vids/sv05.mov',
+                filename=u'/Users/MRIPsychology/Documents/MATLAB/Experiments/Child/stimuli/sv05.mov',
                 ori=0, pos=(0, 0), opacity=1,
                 depth=0.0,
                 )
@@ -1440,7 +1440,7 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '1'):
             # update component parameters for each repeat
             movie_14 = visual.MovieStim3(
                 win=win, name='movie_14',
-                filename=u'/Users/sarahcraig/Desktop/ResearchFiles/VCT2/animacy_vids/sv06.mov',
+                filename=u'/Users/MRIPsychology/Documents/MATLAB/Experiments/Child/stimuli/sv06.mov',
                 ori=0, pos=(0, 0), opacity=1,
                 depth=0.0,
                 )
@@ -1529,7 +1529,7 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '1'):
             # update component parameters for each repeat
             movie_15 = visual.MovieStim3(
                 win=win, name='movie_15',
-                filename=u'/Users/sarahcraig/Desktop/ResearchFiles/VCT2/animacy_vids/sv07.mov',
+                filename=u'/Users/MRIPsychology/Documents/MATLAB/Experiments/Child/stimuli/sv07.mov',
                 ori=0, pos=(0, 0), opacity=1,
                 depth=0.0,
                 )
@@ -1618,7 +1618,7 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '1'):
             # update component parameters for each repeat
             movie_16 = visual.MovieStim3(
                 win=win, name='movie_16',
-                filename=u'/Users/sarahcraig/Desktop/ResearchFiles/VCT2/animacy_vids/sv08.mov',
+                filename=u'/Users/MRIPsychology/Documents/MATLAB/Experiments/Child/stimuli/sv08.mov',
                 ori=0, pos=(0, 0), opacity=1,
                 depth=0.0,
                 )
@@ -1736,7 +1736,7 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '2'):
             # update component parameters for each repeat
             movie_9 = visual.MovieStim3(
                 win=win, name='movie_9',
-                filename=u'/Users/sarahcraig/Desktop/ResearchFiles/VCT2/animacy_vids/sv01.mov',
+                filename=u'/Users/MRIPsychology/Documents/MATLAB/Experiments/Child/stimuli/sv01.mov',
                 ori=0, pos=(0, 0), opacity=1,
                 depth=0.0,
                 )
@@ -1826,7 +1826,7 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '2'):
             # update component parameters for each repeat
             movie_10 = visual.MovieStim3(
                 win=win, name='movie_10',
-                filename=u'/Users/sarahcraig/Desktop/ResearchFiles/VCT2/animacy_vids/sv02.mov',
+                filename=u'/Users/MRIPsychology/Documents/MATLAB/Experiments/Child/stimuli/sv02.mov',
                 ori=0, pos=(0, 0), opacity=1,
                 depth=0.0,
                 )
@@ -1914,7 +1914,7 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '2'):
             # update component parameters for each repeat
             movie_11 = visual.MovieStim3(
                 win=win, name='movie_11',
-                filename=u'/Users/sarahcraig/Desktop/ResearchFiles/VCT2/animacy_vids/sv03.mov',
+                filename=u'/Users/MRIPsychology/Documents/MATLAB/Experiments/Child/stimuli/sv03.mov',
                 ori=0, pos=(0, 0), opacity=1,
                 depth=0.0,
                 )
@@ -2003,7 +2003,7 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '2'):
             # update component parameters for each repeat
             movie_12 = visual.MovieStim3(
                 win=win, name='movie_12',
-                filename=u'/Users/sarahcraig/Desktop/ResearchFiles/VCT2/animacy_vids/sv04.mov',
+                filename=u'/Users/MRIPsychology/Documents/MATLAB/Experiments/Child/stimuli/sv04.mov',
                 ori=0, pos=(0, 0), opacity=1,
                 depth=0.0,
                 )
@@ -2091,7 +2091,7 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '2'):
             # update component parameters for each repeat
             movie_13 = visual.MovieStim3(
                 win=win, name='movie_13',
-                filename=u'/Users/sarahcraig/Desktop/ResearchFiles/VCT2/animacy_vids/sv05.mov',
+                filename=u'/Users/MRIPsychology/Documents/MATLAB/Experiments/Child/stimuli/sv05.mov',
                 ori=0, pos=(0, 0), opacity=1,
                 depth=0.0,
                 )
@@ -2179,7 +2179,7 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '2'):
             # update component parameters for each repeat
             movie_14 = visual.MovieStim3(
                 win=win, name='movie_14',
-                filename=u'/Users/sarahcraig/Desktop/ResearchFiles/VCT2/animacy_vids/sv06.mov',
+                filename=u'/Users/MRIPsychology/Documents/MATLAB/Experiments/Child/stimuli/sv06.mov',
                 ori=0, pos=(0, 0), opacity=1,
                 depth=0.0,
                 )
@@ -2267,7 +2267,7 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '2'):
             # update component parameters for each repeat
             movie_15 = visual.MovieStim3(
                 win=win, name='movie_15',
-                filename=u'/Users/sarahcraig/Desktop/ResearchFiles/VCT2/animacy_vids/sv07.mov',
+                filename=u'/Users/MRIPsychology/Documents/MATLAB/Experiments/Child/stimuli/sv07.mov',
                 ori=0, pos=(0, 0), opacity=1,
                 depth=0.0,
                 )
@@ -2356,7 +2356,7 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '2'):
             # update component parameters for each repeat
             movie_16 = visual.MovieStim3(
                 win=win, name='movie_16',
-                filename=u'/Users/sarahcraig/Desktop/ResearchFiles/VCT2/animacy_vids/sv08.mov',
+                filename=u'/Users/MRIPsychology/Documents/MATLAB/Experiments/Child/stimuli/sv08.mov',
                 ori=0, pos=(0, 0), opacity=1,
                 depth=0.0,
                 )
@@ -2444,7 +2444,7 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '2'):
             # update component parameters for each repeat
             movie = visual.MovieStim3(
                 win=win, name='movie',
-                filename=u'/Users/sarahcraig/Desktop/ResearchFiles/VCT2/animacy_vids/cv01.mov',
+                filename=u'/Users/MRIPsychology/Documents/MATLAB/Experiments/Child/stimuli/cv01.mov',
                 ori=0, pos=(0, 0), opacity=1,
                 depth=0.0,
                 )
@@ -2533,7 +2533,7 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '2'):
             # update component parameters for each repeat
             movie_2 = visual.MovieStim3(
                 win=win, name='movie_2',
-                filename=u'/Users/sarahcraig/Desktop/ResearchFiles/VCT2/animacy_vids/cv02.mov',
+                filename=u'/Users/MRIPsychology/Documents/MATLAB/Experiments/Child/stimuli/cv02.mov',
                 ori=0, pos=(0, 0), opacity=1,
                 depth=0.0,
                 )
@@ -2621,7 +2621,7 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '2'):
             # update component parameters for each repeat
             movie_3 = visual.MovieStim3(
                 win=win, name='movie_3',
-                filename=u'/Users/sarahcraig/Desktop/ResearchFiles/VCT2/animacy_vids/cv03.mov',
+                filename=u'/Users/MRIPsychology/Documents/MATLAB/Experiments/Child/stimuli/cv03.mov',
                 ori=0, pos=(0, 0), opacity=1,
                 depth=0.0,
                 )
@@ -2709,7 +2709,7 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '2'):
             # update component parameters for each repeat
             movie_4 = visual.MovieStim3(
                 win=win, name='movie_4',
-                filename=u'/Users/sarahcraig/Desktop/ResearchFiles/VCT2/animacy_vids/cv04.mov',
+                filename=u'/Users/MRIPsychology/Documents/MATLAB/Experiments/Child/stimuli/cv04.mov',
                 ori=0, pos=(0, 0), opacity=1,
                 depth=0.0,
                 )
@@ -2798,7 +2798,7 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '2'):
             # update component parameters for each repeat
             movie_5 = visual.MovieStim3(
                 win=win, name='movie_5',
-                filename=u'/Users/sarahcraig/Desktop/ResearchFiles/VCT2/animacy_vids/cv05.mov',
+                filename=u'/Users/MRIPsychology/Documents/MATLAB/Experiments/Child/stimuli/cv05.mov',
                 ori=0, pos=(0, 0), opacity=1,
                 depth=0.0,
                 )
@@ -2886,7 +2886,7 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '2'):
             # update component parameters for each repeat
             movie_6 = visual.MovieStim3(
                 win=win, name='movie_6',
-                filename=u'/Users/sarahcraig/Desktop/ResearchFiles/VCT2/animacy_vids/cv06.mov',
+                filename=u'/Users/MRIPsychology/Documents/MATLAB/Experiments/Child/stimuli/cv06.mov',
                 ori=0, pos=(0, 0), opacity=1,
                 depth=0.0,
                 )
@@ -2974,7 +2974,7 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '2'):
             # update component parameters for each repeat
             movie_7 = visual.MovieStim3(
                 win=win, name='movie_7',
-                filename=u'/Users/sarahcraig/Desktop/ResearchFiles/VCT2/animacy_vids/cv07.mov',
+                filename=u'/Users/MRIPsychology/Documents/MATLAB/Experiments/Child/stimuli/cv07.mov',
                 ori=0, pos=(0, 0), opacity=1,
                 depth=0.0,
                 )
@@ -3062,7 +3062,7 @@ if (expInfo['randomization (1 = control, 2 = social)'] == '2'):
             # update component parameters for each repeat
             movie_8 = visual.MovieStim3(
                 win=win, name='movie_8',
-                filename=u'/Users/sarahcraig/Desktop/ResearchFiles/VCT2/animacy_vids/cv08.mov',
+                filename=u'/Users/MRIPsychology/Documents/MATLAB/Experiments/Child/stimuli/cv08.mov',
                 ori=0, pos=(0, 0), opacity=1,
                 depth=0.0,
                 )
